@@ -1,8 +1,6 @@
 # CTF - Challenge vivatech
 
 
-
-
 -----------
 
 ## Installation manuel
@@ -12,3 +10,5 @@ Mais voici comment installer ce CTF manuellement :
 > git clone https://github.com/Hack-Oeil/ctf_vivatech.git
 
 > cd ctf_vivatech
+
+> docker compose up
