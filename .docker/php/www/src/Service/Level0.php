@@ -18,7 +18,7 @@ class Level0
         // Si on arrive ici on supprime le cookie c'est que la session a été réinitialisé
         // mais par pour le bot ^^
         if($_SERVER["REMOTE_ADDR"] !== $_ENV['BOT_IP']) {
-            setCookie('jwt', $this->jwt, time()-1);
+            setCookie('jwt', '', time()-1);
         }
         return false;
     }

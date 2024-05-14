@@ -66,7 +66,7 @@ class ControlLevel
         //--------------------------------------------------------------------
         // Vérification Level 6 : allumer la lumiere
         if((new Level6)->verify()) {
-            $flags["Final"] = $helper->flag("FLAG_LEVEL_6");
+            $flags["Final"] = $helper->flag("FLAG_FINAL");
             $bonus++; // On considére comme un Bonus
             $level++;
         }
@@ -80,7 +80,7 @@ class ControlLevel
 
 
         // Permet de gérer le debug sur le mode expert (pour ne pas dépasser)
-        if($_SESSION['EXPERT'] > (sizeof($flags)-$bonus)) { $_SESSION['EXPERT'] = (sizeof($flags)-$bonus); }
+        if(isset($_SESSION['EXPERT']) && $_SESSION['EXPERT'] > (sizeof($flags)-$bonus)) { $_SESSION['EXPERT'] = (sizeof($flags)-$bonus); }
         if(isset($flags["BONUS_WHITE_HAT"]) && $_SESSION['EXPERT'] === (sizeof($flags)-$bonus)) {
             $type = 'success';
             if($_SESSION['EXPERT'] == 6) {
@@ -91,8 +91,9 @@ class ControlLevel
         }
         
         $messageExpert = "";
-        if($_SESSION['EXPERT'] !== 6 && (sizeof($flags)-$bonus) === 6) {
+        if(isset($_SESSION['EXPERT']) && $_SESSION['EXPERT'] !== 6 && (sizeof($flags)-$bonus) === 6) {
             $messageExpert = "Vous ne pouvez pas obtenir le flag final, car vous n'avez pas respecté les engagements d'un véritable hacker éthique.";
+            if(isset($flags["Final"])) { unset($flags["Final"]); }
         }
 
         return [
