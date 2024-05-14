@@ -9,6 +9,11 @@
             "App\\" : "src/"     
         }
     },
+    "config": {
+        "platform": {
+            "php": "7.4"
+         }
+    },
     "repositories":[
         {
             "type": "package",
