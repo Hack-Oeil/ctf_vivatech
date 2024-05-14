@@ -1,0 +1,30 @@
+{% extends 'web/layout.html.twig' %}
+
+{% block content %}
+<!-- About-->
+<section class="resume-section" id="about">
+    <div class="resume-section-content">
+        <h1 class="mb-0">Web Mailing</h1>
+        <div class="subheading mb-5">Vous avez trouvé tout les <s>flags</s> défauts de sécurité, prévenez nous.</div>   
+        {% if success %}<div class="alert alert-success">{{ success }}</div>{% endif %}
+        {% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
+        <form action="/web-mailing" method="post">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">📧</span>
+                <input type="email" class="form-control" name="from" placeholder="Expediteur, (exemple: contact@ethical-hacker.fr)" aria-label="from" aria-describedby="basic-addon1">
+            </div>
+             <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">📧</span>
+                <input type="email" class="form-control" name="for" placeholder="Destinataire, (contact à qui vous souhaitez envoyer un message)" aria-label="for" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">            
+                <input type="text" class="form-control" name="subject" placeholder="Sujet" aria-label="subject" aria-describedby="basic-addon1">
+            </div>
+             <div class="input-group mb-3">            
+                <textarea class="form-control" name="message" rows="5" placeholder="Votre message" aria-label="message" aria-describedby="basic-addon1"></textarea>
+            </div>
+            <button class="btn btn-outline-primary" type="submit">Envoyer</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

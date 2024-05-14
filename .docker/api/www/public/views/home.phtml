@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+    <?php  if($_SERVER['HTTP_USER_AGENT'] === 'EthicalTester/1.0') { 
+        echo "<!-- Page: home, User-Agent: EthicalTester/1.0 -->";
+    } ?>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <h1>API Documentation de ma Robotique</h1>
+            <a href="/docs" class="btn">Get Started</a>
+        </div>
+    </header>
+    <main>
+        <section id="introduction">
+            <h2>Présentation</h2>
+            <p>Pour le moment, seul le système de lumière fonctionne.</p>
+        </section>
+
+        <section id="features">
+            <h2>Fonctionnalités à venir</h2>
+            <ul>
+                <li>
+                    <h3>Contrôle des différents dispositifs</h3>
+                    <p>Mon API devra permettre de contrôler une large gamme de dispositifs domestiques, y compris les thermostats, les serrures de porte, les caméras de sécurité, et bien plus encore.</p>
+                </li>
+                <li>
+                    <h3>Automatisation intelligente</h3>
+                    <p>Création de scénarios d'automatisation intelligente pour simplifier ma vie quotidienne.</p>
+                </li>
+                <li>
+                    <h3>Alerte de détection</h3>
+                    <p>Mon API permettre la détection et l'envoi d'alerte, afin d'assurer ma sécurité et mon confort.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="resources">
+            <h2>Ressources supplémentaires</h2>
+            <ul>
+                <li><a href="/docs">Guide de démarrage rapide</a></li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

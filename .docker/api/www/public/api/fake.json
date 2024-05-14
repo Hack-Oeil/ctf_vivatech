@@ -1,0 +1,28 @@
+{
+    "lights": [
+        {
+            "id": 1,
+            "name": "Ampoule 1",
+            "type": "Dimmable light",
+            "status": "off"
+        },
+        {
+            "id": 2,
+            "name": "Ampoule 2",
+            "type": "Dimmable light",
+            "status": "on"
+        },
+        {
+            "id": 3,
+            "name": "Ampoule 3",
+            "type": "Dimmable light",
+            "status": "off"
+        },
+        {
+            "id": 4,
+            "name": "Ampoule 4",
+            "type": "Dimmable light",
+            "status": "off"
+        }
+    ]
+}

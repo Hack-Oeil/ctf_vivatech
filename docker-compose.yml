@@ -1,0 +1,109 @@
+version: "3"
+services:
+    web_apache:
+        container_name: web.vivatech.fr
+        build:
+            context: ./.docker/php
+            args:
+                TIMEZONE: ${TIMEZONE}
+        environment:
+            # connexion SQL
+            MYSQL_HOST: ${MYSQL_HOST}
+            MYSQL_DBNAME: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            HOOS_CTF_EMAIL: ${HOOS_CTF_EMAIL}
+            # Les flags
+            FLAG_LEVEL_0: ${FLAG_LEVEL_0}
+            FLAG_LEVEL_1: ${FLAG_LEVEL_1}
+            FLAG_LEVEL_2: ${FLAG_LEVEL_2}
+            FLAG_LEVEL_3: ${FLAG_LEVEL_3}
+            FLAG_LEVEL_4: ${FLAG_LEVEL_4}
+            FLAG_LEVEL_5: ${FLAG_LEVEL_5}
+            FLAG_LEVEL_6: ${FLAG_LEVEL_6}
+            # Les flags Bonus
+            FLAG_BONUS_WHITE_HAT: ${FLAG_BONUS_WHITE_HAT}
+            FLAG_BONUS_CURIEUX: ${FLAG_BONUS_CURIEUX}
+            FLAG_BONUS_JOB: ${FLAG_BONUS_JOB}
+            # Le FLAG de fin
+            FLAG_FINAL: ${FLAG_FINAL}
+            
+            # Les IPs valide pour Flag 1
+            IP_VALID_1: ${IP_VALID_1}
+            IP_VALID_2: ${IP_VALID_2}
+
+            # IP DU BOT
+            BOT_IP: 172.30.10.80
+
+            # IP DES SERVEURS
+            SERVER_WEB: 172.30.10.100
+            SERVER_SQL: 172.30.10.101
+            SERVER_DOMOTIQUE: 172.30.10.102
+
+            # API KEY
+            API_KEY_DOMOTIQUE: ${API_KEY_DOMOTIQUE}
+        ports:
+            - 80:80
+        restart: always
+        volumes:
+            - web:/var/www/html
+        networks:
+            vivatech_network:
+                ipv4_address: 172.30.10.100
+    db:
+        container_name: sql.vivatech.fr
+        image: mysql:8.0.33
+        platform: linux/x86_64
+        command: --default-authentication-plugin=mysql_native_password
+        volumes:
+            - ./.docker/db/init.sql:/docker-entrypoint-initdb.d
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        restart: always
+        networks:
+            vivatech_network:
+                ipv4_address: 172.30.10.101
+    api_apache:
+        container_name: api.vivatech.fr
+        build:
+            context: ./.docker/api
+            args:
+                TIMEZONE: ${TIMEZONE}
+        environment:
+            # API KEY
+            URL_API_HUE: ${URL_API_HUE}
+            API_KEY_DOMOTIQUE: ${API_KEY_DOMOTIQUE}  
+            LIGHT_HUE: ${LIGHT_HUE}
+        restart: always
+        networks:
+            vivatech_network:
+                ipv4_address: 172.30.10.102
+    botserver:
+        build: ./.docker/bot/
+        restart: always
+        container_name: bot.vivatech.fr
+        healthcheck:
+            test: ["CMD", "wscat", "-c", "ws://localhost:8282"]
+            interval: 5s
+            timeout: 3s
+            retries: 10
+        command: npm start
+        networks:
+            vivatech_network:
+                ipv4_address: 172.30.10.80
+    composer:
+        container_name: composer_install
+        image: composer
+        volumes:
+            - web:/app
+        command: composer install --ignore-platform-reqs
+volumes:
+    web:
+networks:
+  vivatech_network:
+    ipam:
+      config:
+        - subnet: 172.30.10.0/24

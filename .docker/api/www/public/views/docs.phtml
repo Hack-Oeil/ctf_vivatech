@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation de l'API - Contrôle des lumières</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+    <?php  if($_SERVER['HTTP_USER_AGENT'] === 'EthicalTester/1.0') { 
+        echo "<!-- Page: docs, User-Agent: EthicalTester/1.0 -->";
+    } ?>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Documentation lumiere</h1>
+        </div>
+    </header>
+    <main>
+        <h1>Documentation de l'API - Contrôle des lumières</h1>
+
+        <h2>Accès à l'API</h2>
+        <p><strong>Ma clef API (API_KEY) :</strong> <?php echo htmlspecialchars($_ENV['API_KEY_DOMOTIQUE']); ?></p>
+        <p><strong>Lumière du salon (id_light):</strong> <?php echo htmlspecialchars($_ENV['LIGHT_HUE']); ?></p>
+        <p>Toutes les requêtes vers l'API doivent inclure la clé d'API valide dans l'URL. Remplacez <code>&lt;API_KEY&gt;</code> par votre clé d'API générée.</p>
+
+        <h2>Endpoints</h2>
+
+        <h3>Lister les lumières disponibles (GET)</h3>
+            <p><strong>Endpoint :</strong> GET /api/&lt;API_KEY&gt;/lights</p>
+            <p><strong>Description :</strong> Cette requête permet de récupérer la liste des lumières disponibles.</p>
+            <p><strong>Réponses possibles :</strong></p>
+            <ul>
+                <li>200 OK : La liste des lumières disponibles est renvoyée dans le corps de la réponse.</li>
+            </ul>
+            <p><strong>Exemple de requête :</strong></p>
+            <pre>GET /api/&lt;API_KEY&gt;/lights</pre>
+
+            <p>Exemple de requête en curl:</p>
+            <pre>curl "http://&lt;IP_SERVER&gt;/api/&lt;API_KEY&gt;/lights" -H "Content-Type: text/plain;charset=UTF-8"</pre>
+
+
+            <p><strong>Exemple de réponse (200 OK) :</strong></p>
+<pre>{"lights": [
+    {
+        "id": 1,
+        "name": "Salon",
+        "type": "LED",
+        "status": "on"
+    },
+    {
+        "id": 2,
+        "name": "Chambre",
+        "type": "Smart Bulb",
+        "status": "off"
+    },
+    {
+        "id": 3,
+        "name": "Cuisine",
+        "type": "Fluorescent",
+        "status": "on"
+    }
+]}</pre>
+
+        <h3>Obtenir les informations d'une lumière (GET)</h3>
+        <p>Endpoint :</p>
+        <code>GET /api/&lt;API_KEY&gt;/light/&lt;id_light&gt;</code>
+        <p>Description :</p>
+        <ul>
+            <li>Cette requête permet d'obtenir des informations sur une lumière spécifique.</li>
+            <li>Remplacez <code>&lt;id_light&gt;</code> par l'identifiant unique de la lumière que vous souhaitez interroger.</li>
+        </ul>
+        <p>Réponses possibles :</p>
+        <ul>
+            <li>200 OK : La lumière a été trouvée, et ses informations sont renvoyées dans le corps de la réponse.</li>
+            <li>404 Not Found : La lumière avec l'ID spécifié n'a pas été trouvée.</li>
+        </ul>
+        <p>Exemple de requête :</p>
+        <code>GET /api/&lt;API_KEY&gt;/light/12</code>
+        <br /><br />
+        <h3>Modifier le statut d'une lumière (PUT)</h3>
+        <p>Endpoint :</p>
+        <code>PUT /api/&lt;API_KEY&gt;/light/&lt;id_light&gt;</code>
+        <p>Description :</p>
+        <ul>
+            <li>Cette requête permet de modifier le statut d'une lumière spécifique.</li>
+            <li>Remplacez <code>&lt;id_light&gt;</code> par l'identifiant unique de la lumière que vous souhaitez modifier.</li>
+            <li>Incluez les données de la lumière à modifier dans le corps de la requête au format JSON.</li>
+        </ul>
+        <p>Réponses possibles :</p>
+        <ul>
+            <li>200 OK : La modification du statut de la lumière a été effectuée avec succès.</li>
+            <li>400 Bad Request : La requête est incorrecte ou les données fournies sont invalides.</li>
+            <li>404 Not Found : La lumière avec l'ID spécifié n'a pas été trouvée.</li>
+        </ul>
+        <p>Exemple de requête :</p>
+        <pre>
+PUT /api/&lt;API_KEY&gt;/light/12
+
+{
+    "status": "on"
+}
+        </pre>
+
+        <p>Exemple de requête en curl:</p>
+        <pre>curl http://&lt;IP_SERVER&gt;/api/&lt;API_KEY&gt;/light/1 -X PUT -H "Content-Type: application/json" --data-raw "{on:true}"</pre>
+        
+        <p>Dans cet exemple, le statut de la lumière avec l'ID <code>12</code> serait modifié pour être allumé.</p>
+    </main>
+</body>
+</html>

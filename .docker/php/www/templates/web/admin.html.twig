@@ -1,0 +1,28 @@
+{% extends 'web/layout.html.twig' %}
+
+{% block content %}
+<!-- About-->
+<section class="resume-section" id="about">
+    <div class="resume-section-content">
+        <h1 class="mb-0">CONNEXION</h1>
+        <div class="subheading mb-5">Accès au dashboard</div>
+        <p class="lead mb-5">
+            Votre session admin n'est pas active, vous devez vous reconnecter.
+        </p>
+        {% if error %}      
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+        <form action="/admin" method="post">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">🙍‍♂️</span>
+                <input type="text" class="form-control" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">🔒</span>
+                <input type="password" class="form-control" name="password" placeholder="Mot de passe" aria-label="Password" aria-describedby="basic-addon1">
+            </div>
+            <button class="btn btn-outline-primary" type="submit">Se connecter</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

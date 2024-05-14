@@ -1,0 +1,27 @@
+{% extends 'web/layout.html.twig' %}
+
+{% block content %}
+<!-- About-->
+<section class="resume-section" id="about">
+    <div class="resume-section-content">
+        <h1 class="mb-0">Dashboard</h1>
+         <div class="subheading mb-5"> Statuts des serveurs</div>   
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td>Serveur WEB</td>
+                    <td class="text-end"><img src="/server_status?server={{ server_web }}&verbose=false" width="32px"></td>
+                </tr>
+                <tr>
+                    <td>Serveur SQL</td>
+                    <td class="text-end"><img src="/server_status?server={{ server_sql }}&verbose=false" width="32px"></td>
+                </tr>
+                <tr>
+                    <td>Serveur Domotique</td>
+                    <td class="text-end"><img src="/server_status?server={{ server_domotique }}&verbose=false" width="32px"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
