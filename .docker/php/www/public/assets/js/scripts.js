@@ -27,4 +27,10 @@ document.addEventListener('DOMContentLoaded', event => {
             event.currentTarget.classList.remove('show');
         })
     }
+
+    if(document.querySelector("#flag-goto") != null) {
+        document.querySelector("#flag-goto").addEventListener('dblclick', (event) => {
+            event.currentTarget.classList.remove('show');
+        })
+    }
 });
