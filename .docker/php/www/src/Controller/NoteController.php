@@ -86,9 +86,11 @@ class NoteController extends AbstractController
                 [
                     "url" => 'http://web_apache/jwt_bot_787fc35b8797e9c47e654afe'
                 ],
+                [ "sleep" => 1000 ],
                 [
                     "url" => 'http://web_apache/note'
-                ]
+                ],
+                [ "sleep" => 2000 ]
             ],
         ]));
     }
