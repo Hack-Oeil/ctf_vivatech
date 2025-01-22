@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,12 +95,12 @@
         <p>Exemple de requête :</p>
         <pre>
 PUT /api/&lt;API_KEY&gt;/light/12
-
-{
-    "status": "on"
-}
+{on: true}
         </pre>
-
+        <p>Exemple réponse :</p>
+        <pre>
+        {"success":{"\/lights\/1\/state\/on":false}}
+        </pre>
         <p>Exemple de requête en curl:</p>
         <pre>curl http://&lt;IP_SERVER&gt;/api/&lt;API_KEY&gt;/light/1 -X PUT -H "Content-Type: application/json" --data-raw "{on:true}"</pre>
         
