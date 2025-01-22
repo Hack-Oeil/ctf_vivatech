@@ -42,7 +42,7 @@ function simpleJson($json) {
 
 if($_SERVER['REQUEST_METHOD'] === 'GET') {
     header('Content-Type: application/json');
-    if((file_exists(__DIR__.'/off') || empty($_ENV['URL_API_HUE']))) {
+    if($_ENV['WITH_BULBS'] != true || empty($_ENV['URL_API_HUE'])) {
         // Si on a un soucis avec le pont on simule une liste d'ampoule
         echo file_get_contents(__DIR__.'/fake.json');
     } else {

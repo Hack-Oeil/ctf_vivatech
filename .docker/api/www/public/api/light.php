@@ -43,7 +43,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
             // allumer / éteindre
             if($data=='{on:true}') $on = true;
             // si probleme avec Philips Hue on simule
-            if((file_exists(__DIR__.'/off') || empty($_ENV['URL_API_HUE']))) {
+            if($_ENV['WITH_BULBS'] != true || empty($_ENV['URL_API_HUE'])) {
                 http_response_code(200);
                 header('Content-Type: application/json');
                 $response["success"] = ["/lights/$light/state" => ["on" => ($on?"true":"false")]];
