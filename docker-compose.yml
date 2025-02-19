@@ -75,7 +75,8 @@ services:
         environment:
             # API KEY
             URL_API_HUE: ${URL_API_HUE}
-            API_KEY_DOMOTIQUE: ${API_KEY_DOMOTIQUE}  
+            WITH_BULBS: ${WITH_BULBS}
+            API_KEY_DOMOTIQUE: ${API_KEY_DOMOTIQUE}        
             LIGHT_HUE: ${LIGHT_HUE}
         restart: always
         networks:
