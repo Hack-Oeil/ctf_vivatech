@@ -1,6 +1,6 @@
 # CTF - Challenge vivatech
 
-Suite à l'invittation de la 3W Academy au salon Vivatech 2024, j'ai créé ce challenge de cybersécurité.
+Suite à l'invitation de la 3W Academy au salon Vivatech 2024, j'ai créé ce challenge de cybersécurité.
 
 
 ## Vidéo 
