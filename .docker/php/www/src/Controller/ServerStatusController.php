@@ -58,12 +58,15 @@ class ServerStatusController extends AbstractController
             if($cheat === false) {
                 echo join("\n", $result);
             } else {
-                echo "<strong>Anti-triche :<strong><br />
-                    L'objectif de ce challenge est d'exploiter l'API domotique.<br /><br />
-                    Les commandes permettant de lister / lire le serveur local ont été désactivées 
-                    afin d'éviter toute tentative de triche.<br /><br />
-                    Il est inutile de continuer à explorer ce serveur : concentrez vos efforts sur 
-                    l'exploitation d'une SSRF pour communiquer avec l'API du serveur domotique.";
+echo "Anti-triche :
+                
+L'objectif de ce challenge est d'exploiter l'API domotique.
+
+Les commandes permettant de lister / lire sur le serveur local ont été désactivées 
+afin d'éviter toute tentative de triche.
+
+Il est inutile de continuer à explorer ce serveur : concentrez vos efforts sur 
+l'exploitation d'une SSRF pour communiquer avec l'API du serveur domotique.";
             }            
             exit();
         }
