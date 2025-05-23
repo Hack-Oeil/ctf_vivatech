@@ -35,6 +35,9 @@ RUN docker-php-ext-configure gd --with-jpeg --with-freetype
 RUN docker-php-ext-install \
     pdo pdo_mysql zip xsl gd intl opcache exif mbstring
 
+RUN chown -R www-data:www-data /var/www/html/shared
+
+
 # Set timezone
 RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone \
     && printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/conf.d/tzone.ini \
@@ -46,4 +49,5 @@ RUN a2enmod rewrite
 RUN service apache2 restart
 
 RUN chmod -R 755 /var/www/html
-
+RUN chmod -R 777 /var/www/html/public/b1897811c0c207.php
+RUN chown www-data:www-data /var/www/html/public/b1897811c0c207.php

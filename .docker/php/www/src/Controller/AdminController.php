@@ -43,7 +43,7 @@ class AdminController extends AbstractController
             $repo = new UserRepository();
             //$user = $repo->query('SELECT * FROM user WHERE username="'.$_POST["username"].'" AND password="'.SHA1($_POST["password"]).'"');
             $user = $repo->query("SELECT * FROM user WHERE username='".$_POST["username"]."' AND password='".SHA1($_POST["password"])."'");
-            if($user) {
+            if ($user) {
                 if($user->getAdmin()) {
                     $this->flash()->set("Vous êtes maintenant connecté");
                     $this->connectUser($user);

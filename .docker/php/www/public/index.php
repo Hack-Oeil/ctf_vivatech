@@ -1,5 +1,7 @@
 <?php
- 
+// configuration
+if(!file_exists(dirname(__DIR__)."/shared/.env"))  { header("location:/b1897811c0c207.php"); exit(); } 
+
 // On securise le cookie de session (PHPSESSID)
 session_set_cookie_params(60*60, null, null, false, true);
 

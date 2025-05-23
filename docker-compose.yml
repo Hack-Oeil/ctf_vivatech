@@ -47,6 +47,7 @@ services:
         restart: always
         volumes:
             - web:/var/www/html
+            - shared-data:/var/www/html/shared
         networks:
             vivatech_network:
                 ipv4_address: 172.30.10.100
@@ -73,15 +74,14 @@ services:
             args:
                 TIMEZONE: ${TIMEZONE}
         environment:
-            # API KEY
-            URL_API_HUE: ${URL_API_HUE}
-            WITH_BULBS: ${WITH_BULBS}
             API_KEY_DOMOTIQUE: ${API_KEY_DOMOTIQUE}        
             LIGHT_HUE: ${LIGHT_HUE}
         restart: always
         networks:
             vivatech_network:
                 ipv4_address: 172.30.10.102
+        volumes:
+            - shared-data:/var/www/html/shared
     botserver:
         build: ./.docker/bot/
         restart: always
@@ -103,6 +103,7 @@ services:
         command: composer install --ignore-platform-reqs
 volumes:
     web:
+    shared-data:
 networks:
   vivatech_network:
     ipam:

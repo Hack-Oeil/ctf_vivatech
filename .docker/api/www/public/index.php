@@ -1,4 +1,10 @@
 <?php
+// chargement de la configuration
+if(file_exists(dirname(__DIR__).'/shared/.env')) {
+    require dirname(__DIR__).'/StaticDotEnv.php';
+    StaticDotEnv::load(dirname(__DIR__).'/shared/.env');
+}
+
 try {
     if(strpos($_SERVER["REQUEST_URI"], '/api/') === 0) {
         $tab = explode("/", $_SERVER["REQUEST_URI"]);
