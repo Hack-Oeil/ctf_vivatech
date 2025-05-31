@@ -13,10 +13,11 @@ class BonusController extends AbstractController
         $_SESSION['FLAG_CURIUS']['security.txt'] = true;
 
         header("Content-Type: text/plain");
-        //return $whiteHat;
+
+        //return $whiteHat; [HTTP_HOST] => localhost:84 
         return $this->render('security/security', [
             'protocol'      => $_SERVER['REQUEST_SCHEME'],
-            'httpServer'    => $_SERVER['HTTP_HOST']
+            'httpServer'    => (!empty($_SERVER['HTTP_X_FORWARDED_HOST']) ? $_SERVER['HTTP_X_FORWARDED_HOST'].$_SERVER['HTTP_X_FORWARDED_PREFIX_PROXY'] : $_SERVER['HTTP_HOST'])
         ]);
     }
 

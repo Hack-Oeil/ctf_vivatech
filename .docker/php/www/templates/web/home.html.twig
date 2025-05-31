@@ -18,10 +18,10 @@
             Je suis toujours prêt à faire de mon mieux, ..., mais le mieux est l'ennemi du bien.
         </p>
         <div class="social-icons">
-            <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
-            <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
-            <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
-            <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a> 
+            <a class="social-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a class="social-icon" href="#"><i class="fab fa-github"></i></a>
+            <a class="social-icon" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="social-icon" href="#"><i class="fab fa-facebook-f"></i></a> 
         </div>
     </div>
 </section>
@@ -43,7 +43,7 @@
                         Schema en small pour ne pas Leak des infos, 
                         car j'ai vu qu'il était possible de spoofer une IP en HTTP 
                     -->
-                    <img src="/assets/img/domotique-small.jpg">
+                    <img src="{{ absolute_url("/assets/img/domotique-small.jpg") }}">
                 </p>
             </div>
             <div class="flex-shrink-0"><span class="text-primary">{{ months[("now"|date("m")) - 2] ~ ' ' ~ "now"|date("Y")|raw }}</span></div>
@@ -58,7 +58,7 @@
                     <br />
                     J'avoue que je me suis pas embeté avec la sécurité de mes notes coté admin vu que je suis le seul à pouvoir en écrire.
                     <br />
-                    <img src="/assets/img/portfolio-small.jpg">
+                    <img src="{{ absolute_url("/assets/img/portfolio-small.jpg") }}">
                 </p>
             </div>
             <div class="flex-shrink-0"><span class="text-primary">{{ months[6] ~ ' ' ~ ("now"|date("Y") - 2) }} - {{ months[10] ~ ' ' ~ ("now"|date("Y") - 2) }}</span></div>
@@ -111,7 +111,7 @@
                     <div class="alert alert-danger">{{ app.flashbag.message }}</div>
                 {% endif %}
             {% endif %}
-            <form action="/note" method="post"> 
+            <form action="{{ absolute_url("/note") }}" method="post"> 
                 <div class="input-group mb-3">                
                     <textarea name="message" placeholder="Ma nouvelle note" class="form-control" rows="5" required></textarea>
                 </div>

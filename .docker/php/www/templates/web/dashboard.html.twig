@@ -10,15 +10,15 @@
             <tbody>
                 <tr>
                     <td>Serveur WEB</td>
-                    <td class="text-end"><img src="/server_status?server={{ server_web }}&verbose=false" width="32px"></td>
+                    <td class="text-end"><img src="{{ absolute_url("/") }}server_status?server={{ server_web }}&verbose=false" width="32px"></td>
                 </tr>
                 <tr>
                     <td>Serveur SQL</td>
-                    <td class="text-end"><img src="/server_status?server={{ server_sql }}&verbose=false" width="32px"></td>
+                    <td class="text-end"><img src="{{ absolute_url("/") }}server_status?server={{ server_sql }}&verbose=false" width="32px"></td>
                 </tr>
                 <tr>
                     <td>Serveur Domotique</td>
-                    <td class="text-end"><img src="/server_status?server={{ server_domotique }}&verbose=false" width="32px"></td>
+                    <td class="text-end"><img src="{{ absolute_url("/") }}server_status?server={{ server_domotique }}&verbose=false" width="32px"></td>
                 </tr>
             </tbody>
         </table>

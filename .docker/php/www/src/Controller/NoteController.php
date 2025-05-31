@@ -24,7 +24,7 @@ class NoteController extends AbstractController
             // effectuer cette requete uniquement si c'est le BOT !
             //file_put_contents(__DIR__.'/test.txt', $_SERVER["REMOTE_ADDR"], FILE_APPEND);
             if($_SERVER["REMOTE_ADDR"] === $_ENV['BOT_IP']) {
-                echo 'ok';
+                
                 $notes = [$repo->query('SELECT * FROM `note` WHERE `read`=0')];
                 if(isset($notes[0]) && !empty($notes[0]->getMessage())) {
                     $pdo = $repo->getPDO();
@@ -69,12 +69,13 @@ class NoteController extends AbstractController
                     $_SESSION['save_state_ethical_xss'] = false;
                 }
                 $this->flash()->set('La note a été enregistrée', 'note_success');
-            } catch (Exception $e){
+            } catch (Exception $e) {
                 $this->flash()->set("L'enregistrement de la note a échoué", 'note_error');
                 $pdo->rollback();
                 throw $e;
             }
         }
+        
         $this->redirectToRoute('/#note');
     }
 

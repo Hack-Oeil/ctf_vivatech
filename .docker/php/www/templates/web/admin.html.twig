@@ -12,7 +12,7 @@
         {% if error %}      
             <div class="alert alert-danger">{{ error }}</div>
         {% endif %}
-        <form action="/admin" method="post">
+        <form action="{{ absolute_url("/admin") }}" method="post">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">🙍‍♂️</span>
                 <input type="text" class="form-control" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">

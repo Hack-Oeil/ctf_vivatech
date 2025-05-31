@@ -20,9 +20,11 @@ function light(string $url, string $method ='GET', bool $on = true)
     $ch = curl_init();
     curl_setopt_array($ch,$defaults);
     if( ! $result = curl_exec($ch)) {
+      
         trigger_error(curl_error($ch));
     }
     curl_close($ch);
+  
     return $result;
 }
 
@@ -31,14 +33,17 @@ if($_SERVER['HTTP_USER_AGENT'] === 'EthicalTester/1.0') {
     $response["ethique"] = 'EthicalTester/1.0';
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {   
-    // todo gérer statut en GET
-    $data = json_decode(light($_ENV['URL_API_HUE'].'/lights/'.$light.'/state'));
+if ($_SERVER['REQUEST_METHOD'] === 'GET') { 
+   http_response_code(200);
+   header('Content-Type: application/json');
+   $data = json_decode(light($_ENV['URL_API_HUE'].'/lights/'. $light), true);
+   echo json_encode($data['state']);
+   exit();
 }
 elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     $data = file_get_contents('php://input');
     $on = false;    
-    if($light >=1 && $light <=4) {
+    //if($light >=1 && $light <=4) {
         if ($data !== null && $data=='{on:true}' || $data =='{on:false}') {  
             // allumer / éteindre
             if($data=='{on:true}') $on = true;
@@ -73,7 +78,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
                 }            
             }
         }
-    }
+    //}
     http_response_code(400);
     header('Content-Type: application/json');
     echo json_encode(["error" => "Bad Request", "message" => "400 Bad Request"]);

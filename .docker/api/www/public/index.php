@@ -11,8 +11,8 @@ try {
         if($tab[2] === $_ENV['API_KEY_DOMOTIQUE']) {
             if($tab[3] == 'light') {
                 if(sizeof($tab) == 5 && !empty($tab[4])) {
+                    $light = (int) $tab[4] ?? 0;
                     if($_SERVER['REQUEST_METHOD'] === 'PUT') {
-                        $light = (int) $tab[4] ?? 0;
                         include __DIR__.'/api/light.php';
                     } elseif($_SERVER['REQUEST_METHOD'] === 'GET') { 
                         include __DIR__.'/api/light.php';
