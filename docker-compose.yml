@@ -96,7 +96,6 @@ services:
             vivatech_network:
                 ipv4_address: 172.30.10.80
     composer:
-        container_name: composer_install
         image: composer
         volumes:
             - web:/app
