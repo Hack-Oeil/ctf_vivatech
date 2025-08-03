@@ -112,7 +112,11 @@ services:
         command: composer install --ignore-platform-reqs
 volumes:
     web:
+        labels:
+            ho.ctf.cyrhades: "1"
     shared-data:
+        labels:
+            ho.ctf.cyrhades: "1"
 networks:
   vivatech_network:
     ipam:
