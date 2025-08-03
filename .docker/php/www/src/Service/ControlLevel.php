@@ -102,7 +102,8 @@ class ControlLevel
             'bonus'             => $bonus,
             'type'              => $type,
             'mailing'           => $enableMailing,
-            'message_expert'    => $messageExpert
+            'message_expert'    => $messageExpert,
+            'RETURN_POSSIBLE'   => $_ENV['RETURN_POSSIBLE']
         ];
     }
 }

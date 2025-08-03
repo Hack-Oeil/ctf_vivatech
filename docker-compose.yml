@@ -1,7 +1,6 @@
 version: "3.9"
 services:
     web_apache:
-        container_name: web.vivatech.fr
         build:
             context: ./.docker/php
             args:
@@ -12,7 +11,10 @@ services:
             MYSQL_DBNAME: ${MYSQL_DATABASE}
             MYSQL_USER: ${MYSQL_USER}
             MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-            HOOS_CTF_EMAIL: ${HOOS_CTF_EMAIL}
+
+            HOOS_CTF_USERNAME: ${HOOS_CTF_USERNAME:-}
+
+            RETURN_POSSIBLE: ${RETURN_POSSIBLE}
             # Les flags
             FLAG_LEVEL_0: ${FLAG_LEVEL_0}
             FLAG_LEVEL_1: ${FLAG_LEVEL_1}
@@ -45,6 +47,8 @@ services:
         ports:
             - ${PORT}:80
         restart: always
+        labels:
+            ho.ctf.cyrhades: "1"
         volumes:
             - web:/var/www/html
             - shared-data:/var/www/html/shared
@@ -67,6 +71,8 @@ services:
         networks:
             vivatech_network:
                 ipv4_address: 172.30.10.101
+        labels:
+            ho.ctf.cyrhades: "1"
     api_apache:
         container_name: api.vivatech.fr
         build:
@@ -80,6 +86,8 @@ services:
         networks:
             vivatech_network:
                 ipv4_address: 172.30.10.102
+        labels:
+            ho.ctf.cyrhades: "1"
         volumes:
             - shared-data:/var/www/html/shared
     botserver:
@@ -92,6 +100,8 @@ services:
             timeout: 3s
             retries: 10
         command: npm start
+        labels:
+            ho.ctf.cyrhades: "1"
         networks:
             vivatech_network:
                 ipv4_address: 172.30.10.80

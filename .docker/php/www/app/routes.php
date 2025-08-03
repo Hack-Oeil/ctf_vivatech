@@ -3,7 +3,9 @@
 return function(\FastRoute\RouteCollector $router) {
     // Page pour reinitialiser la "partie"
     $router->get('/reset', 'App\Controller\ResetFlagsController::init');
-    $router->get('/change_level', 'App\Controller\ResetFlagsController::changeCurrentCtf');
+    if($_ENV['RETURN_POSSIBLE'] == "true") {
+        $router->get('/change_level', 'App\Controller\ResetFlagsController::changeCurrentCtf');
+    }
 
     // Bonus
     $router->get('/.well-known/security.txt', 'App\Controller\BonusController::whiteHat');

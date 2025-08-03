@@ -1,4 +1,4 @@
-# CTF Web Serveur - Challenge vivatech
+# CTF Web Serveur - Blog d'Aliboron
 
 ## Présentation du CTF 
 **ID** 404 dans **les CTFs de Cyrhades**
@@ -9,7 +9,7 @@ Suite à l'invitation de la 3W Academy au salon Vivatech 2024, j'ai créé ce ch
 
 
 ## Aperçu
-![.docker/infos/capture.png](.docker/infos/capture.png)
+![presentation/assets/images/capture.jpg](presentation/assets/images/capture.jpg)
 
 
 

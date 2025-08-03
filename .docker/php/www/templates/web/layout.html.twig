@@ -63,7 +63,9 @@
                     {% endif %}       
                 </div>
             {% endif %}
-            {% if app.level >= 0 %}
+
+
+            {% if app.RETURN_POSSIBLE == "true" and app.level >= 0 %}
                 <div id="flag-goto"class="show p-3 mb-2 bg-dark text-white">     
                     En suivant ces liens vous perdrez les Flags des challenges des niveaux supérieurs   
                     <ul>        

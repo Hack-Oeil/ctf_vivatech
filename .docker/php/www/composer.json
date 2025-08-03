@@ -34,7 +34,7 @@
     ],
     "require": {
         "cyrhades/yoop": "master",
-        "twig/twig": "^3.0",
+        "twig/twig": "^2.13",
         "textalk/websocket": "^1.6",
         "nikic/fast-route": "^1.3" 
     },
