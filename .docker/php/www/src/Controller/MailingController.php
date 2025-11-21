@@ -24,6 +24,7 @@ class MailingController extends AbstractController
 
     public function send() 
     {
+        $error = null;
         $vars = (new ControlLevel)->getResult();
         if($vars['mailing'] !== true) {
             $this->redirectToRoute('/');

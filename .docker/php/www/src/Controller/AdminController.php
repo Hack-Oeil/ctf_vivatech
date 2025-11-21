@@ -34,6 +34,7 @@ class AdminController extends AbstractController
 
     public function post() 
     {
+        $error = null;
         if(!isset($_COOKIE['jwt']) || $_COOKIE['jwt'] !== $this->jwt || !isset($_SESSION['game_started'])) {
             $this->redirectToRoute('/');
         }
