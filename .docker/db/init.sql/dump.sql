@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `note` (
 
 
 insert into user (id, firstname, lastname, username, password, admin) values (1, 'John', 'Doe', 'guest', '35675e68f4b5af7b995d9205ad0fc43842f16450', false);
-insert into user (id, firstname, lastname, username, password, admin) values (2, 'Aliboron', 'Oscar', 'aliboron', 'a79957efd1357875fbe8dee7fc2c495923643483', true);
+insert into user (id, firstname, lastname, username, password, admin) values (2, 'Aliboron', 'Oscar', 'adminAliboronSecret', 'a79957efd1357875fbe8dee7fc2c495923643483', true);
 insert into user (id, firstname, lastname, username, password, admin) values (3, 'Michek', 'Dupont', 'm.dupont@boutik.com', '143b94a7c161e61dcb500ec956b38618239239c8', false);
 insert into user (id, firstname, lastname, username, password, admin) values (4, 'Molly', 'Lourens', 'mlourens3@nih.gov', 'efdb5edcbe17a1fb22219cf6d7a6ba87cfcd3e88', false);
 insert into user (id, firstname, lastname, username, password, admin) values (5, 'Jeanine', 'Carpmile', 'jcarpmile4@github.io', '4cf8c6b848fb1b96e2450d2004a1911d6ef324e6', false);
