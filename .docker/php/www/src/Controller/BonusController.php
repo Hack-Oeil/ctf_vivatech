@@ -17,7 +17,7 @@ class BonusController extends AbstractController
         //return $whiteHat; [HTTP_HOST] => localhost:84 
         return $this->render('security/security', [
             'protocol'      => $_SERVER['REQUEST_SCHEME'],
-            'httpServer'    => (!empty($_SERVER['HTTP_X_FORWARDED_HOST']) ? $_SERVER['HTTP_X_FORWARDED_HOST'].$_SERVER['HTTP_X_FORWARDED_PREFIX_PROXY'] : $_SERVER['HTTP_HOST'])
+            'httpServer'    => (!empty($_SERVER['HTTP_X_FORWARDED_HOST']) && !empty($_SERVER['HTTP_X_FORWARDED_PREFIX_PROXY']) ? $_SERVER['HTTP_X_FORWARDED_HOST'].$_SERVER['HTTP_X_FORWARDED_PREFIX_PROXY'] : $_SERVER['HTTP_HOST'])
         ]);
     }
 
