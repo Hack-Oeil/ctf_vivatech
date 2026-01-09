@@ -7,7 +7,7 @@ use App\Service\ControlLevel;
 
 class ServerStatusController extends AbstractController
 {
-    private $jwt = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWxpYm9yb24ifQ._qpW2Cw_fUnzTdqaMWLZlU1CNZKLBtHrCeGxL6alisBRmV98oO5MUIrApY3S4qqT-ar3oYC75UVQD3Gc78S2Wg';
+    private $jwt = 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW5BbGlib3JvblNlY3JldCJ9._qpW2Cw_fUnzTdqaMWLZlU1CNZKLBtHrCeGxL6alisBRmV98oO5MUIrApY3S4qqT-ar3oYC75UVQD3Gc78S2Wg';
         
     public function ping() 
     {
