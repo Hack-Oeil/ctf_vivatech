@@ -10,7 +10,7 @@ class Level2
     public function verify() {
         // controller si on est coté 
         if(isset($_SESSION['level-1'])) {
-            if(isset($_SESSION["level-2"]) || (new HelperController)->secretIsCorrect($_COOKIE["jwt"]??'', 'afe9c5eb1a4454851')) {
+            if(isset($_SESSION["level-2"]) || (new HelperController)->secretIsCorrect($_COOKIE["jwt"]??'', '35dcf29840a72a8b25c')) {
                 if(!isset($_SESSION["level-2"])) {
                     // Pour valider le vol de cookie en ethical il faut avoir envoyé 
                     // l'injection avec le UserAgent, on a mémorisé l'info dans $_SESSION['save_state_ethical_xss']
