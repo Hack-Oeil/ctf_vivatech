@@ -9,6 +9,14 @@ require '../vendor/autoload.php';
 
 $kernel = new Yoop\Kernel();
 
+$csp = $kernel->contentSecurityPolicy();
+if ($csp !== null) {
+    $csp->addStyleSrc(["'unsafe-inline'", "'sha256-Jc7XaRBVYMy6h6FvjL32miHrOGOxYV+OP4swZ/9Gysw='", "https://fonts.googleapis.com", "https://use.fontawesome.com"]);
+    $csp->addFontSrc(["https://fonts.gstatic.com", "https://use.fontawesome.com"]);
+    $csp->addScriptSrc(["https://use.fontawesome.com", "https://cdn.jsdelivr.net", "https://code.jquery.com", "https://stackpath.bootstrapcdn.com"]);
+    $csp->addConnectSrc(["https://cdn.jsdelivr.net"]);
+}
+
 (new Yoop\Database\Wait)->tryMySQL();
 
 $router = $kernel->getRouter();

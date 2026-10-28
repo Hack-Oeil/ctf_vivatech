@@ -79,21 +79,24 @@ class NoteController extends AbstractController
         $this->redirectToRoute('/#note');
     }
 
-    private function callBot() {
-        $client = new \WebSocket\Client("ws://botserver:8282");
-        $client->text(json_encode([
-            "host" => 'http://web_apache',
-            "actions" => [
-                [
-                    "url" => 'http://web_apache/jwt_bot_787fc35b8797e9c47e654afe'
+    protected function callBot(array $dataCall = [])
+    {
+        if (empty($dataCall)) {
+            $dataCall = [
+                "host" => 'http://web_apache',
+                "actions" => [
+                    [
+                        "url" => 'http://web_apache/jwt_bot_787fc35b8797e9c47e654afe'
+                    ],
+                    [ "sleep" => 1000 ],
+                    [
+                        "url" => 'http://web_apache/note'
+                    ],
+                    [ "sleep" => 2000 ]
                 ],
-                [ "sleep" => 1000 ],
-                [
-                    "url" => 'http://web_apache/note'
-                ],
-                [ "sleep" => 2000 ]
-            ],
-        ]));
+            ];
+        }
+        parent::callBot($dataCall);
     }
 
 
